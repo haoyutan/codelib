@@ -1,0 +1,56 @@
+# @configure_input@
+
+# Package-related substitution variables
+package		= @PACKAGE_NAME@
+version		= @PACKAGE_VERSION@
+tarname		= @PACKAGE_TARNAME@
+distdir		= $(tarname)-$(version)
+
+# Prefix-related substitution variables
+prefix		= @prefix@
+exec_prefix	= @exec_prefix@
+bindir		= @bindir@
+
+# Tool-related substitution variables
+CC		= gcc
+DEFS		= @DEFS@
+LIBS		= @LIBS@
+CFLAGS		= @CFLAGS@
+CPPFLAGS	= @CPPFLAGS@
+INSTALL		= @INSTALL@
+INSTALL_DATA	= @INSTALL_DATA@
+INSTALL_PROGRAM	= @INSTALL_PROGRAM@
+INSTALL_SCRIPT	= @INSTALL_SCRIPT@
+
+# VPATH-related substitution variables
+top_builddir	= @top_builddir@
+builddir	= @builddir@
+srcdir		= @srcdir@
+VPATH		= @srcdir@          
+
+all: jupiter
+
+jupiter: main.c
+	$(CC) $(CFLAGS) $(DEFS) $(CPPFLAGS) -I. -I$(srcdir) -I.. -o $@ $(srcdir)/main.c $(LIBS)
+
+clean:
+	rm -rf jupiter
+
+check: all
+	./jupiter | grep "Hello from .*jupiter!"
+	@echo "*** ALL TESTS PASSED ***"
+
+install:
+	install -d $(DESTDIR)$(bindir)
+	install -m 0755 jupiter $(DESTDIR)$(bindir)
+
+uninstall:
+	-rm $(DESTDIR)$(bindir)/bin/jupiter
+
+Makefile: Makefile.in ../config.status
+	cd .. && ./config.status src/$@
+
+../config.status: ../configure
+	cd .. && ./config.status --recheck
+
+.PHONY: all clean check install uninstall
