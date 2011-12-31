@@ -12,7 +12,7 @@ exec_prefix	= @exec_prefix@
 bindir		= @bindir@
 
 # Tool-related substitution variables
-CC		= gcc
+CC		= @CC@
 DEFS		= @DEFS@
 LIBS		= @LIBS@
 CFLAGS		= @CFLAGS@
@@ -41,8 +41,8 @@ check: all
 	@echo "*** ALL TESTS PASSED ***"
 
 install:
-	install -d $(DESTDIR)$(bindir)
-	install -m 0755 jupiter $(DESTDIR)$(bindir)
+	$(INSTALL) -d $(DESTDIR)$(bindir)
+	$(INSTALL_PROGRAM) -m 0755 jupiter $(DESTDIR)$(bindir)
 
 uninstall:
 	-rm $(DESTDIR)$(bindir)/bin/jupiter

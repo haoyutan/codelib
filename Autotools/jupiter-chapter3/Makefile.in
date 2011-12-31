@@ -38,9 +38,12 @@ $(distdir).tar.gz: $(distdir)
 
 $(distdir):
 	mkdir -p $(distdir)/src
-	cp Makefile $(distdir)
-	cp src/Makefile $(distdir)/src
-	cp src/main.c $(distdir)/src
+	cp $(srcdir)/configure $(distdir)
+	cp $(srcdir)/config.h.in $(distdir)
+	cp $(srcdir)/install-sh $(distdir)
+	cp $(srcdir)/Makefile.in $(distdir)
+	cp $(srcdir)/src/Makefile.in $(distdir)/src
+	cp $(srcdir)/src/main.c $(distdir)/src
 
 distclean:
 	-rm -rf $(distdir).tar.gz
@@ -48,6 +51,7 @@ distclean:
 
 distcheck: $(distdir).tar.gz
 	gzip -cd $+ | tar xvf -
+	cd $(distdir); ./configure
 	$(MAKE) -C $(distdir) all check
 	$(MAKE) -C $(distdir) DESTDIR=$${PWD}/$(distdir)/_inst \
 	  install uninstall
