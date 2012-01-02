@@ -9,6 +9,7 @@ depcomp
 missing
 install-sh
 stamp-h1
+ltmain.sh
 
 *.Po
 *.o
