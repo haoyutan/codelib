@@ -3,12 +3,15 @@
 
 AC_PREREQ([2.67])
 AC_INIT([jupiter], [1.0], [haoyutan@gmail.com])
+AM_INIT_AUTOMAKE
 AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_HEADERS([config.h])
 
 # Checks for programs.
 AC_PROG_CC
 AC_PROG_INSTALL
+AC_PROG_RANLIB
+AM_PROG_CC_C_O
 
 # Checks for header files. (1)
 AC_HEADER_STDC
@@ -44,16 +47,20 @@ if test "x${async_exec}" = xyes; then
 fi
 
 # Checks for header files. (2)
-AC_CHECK_HEADERS([stdlib.h])
+AC_CHECK_HEADERS([stdlib.h], [],
+  [AC_MSG_ERROR([no stdlib.h, cannot proceed.])])
 
 # Checks for typedefs, structures, and compiler characteristics.
 
 # Checks for library functions.
 
 AC_CONFIG_FILES([Makefile
+                 common/Makefile
                  src/Makefile])
 
 AC_OUTPUT
+
+AC_PREFIX_DEFAULT(~/tmp/fsroot)
 
 echo \
 "-------------------------------------------------
