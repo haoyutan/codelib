@@ -44,7 +44,8 @@ if test "x${async_exec}" = xyes; then
 fi
 
 # Checks for header files. (2)
-AC_CHECK_HEADERS([stdlib.h])
+AC_CHECK_HEADERS([stdlib.h], [],
+  [AC_MSG_ERROR([no stdlib.h, cannot proceed.])])
 
 # Checks for typedefs, structures, and compiler characteristics.
 
