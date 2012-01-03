@@ -1,4 +1,4 @@
-AM_CFLAGS = -std=c99
+SUBDIRS = modules
 
 bin_PROGRAMS = jupiter
 jupiter_SOURCES = main.c
