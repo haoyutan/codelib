@@ -50,16 +50,23 @@ fi
 # Checks for header files. (2)
 AC_CHECK_HEADERS([stdlib.h], [],
   [AC_MSG_ERROR([no stdlib.h, cannot proceed.])])
+AC_CHECK_HEADERS([dlfcn.h], [],
+  [AC_MSG_ERROR([no stdlib.h, cannot proceed.])])
 
 # Checks for typedefs, structures, and compiler characteristics.
 
 # Checks for library functions.
+AC_SEARCH_LIBS([dlopen], [dl])
+
+CFLAGS="-std=c99 $CFLAGS"
 
 AC_CONFIG_FILES([Makefile
                  common/Makefile
                  include/Makefile
                  libjup/Makefile
-                 src/Makefile])
+                 src/Makefile
+                 src/modules/Makefile
+                 src/modules/hithere/Makefile])
 
 AC_OUTPUT
 
@@ -72,6 +79,7 @@ echo \
 
  Prefix: '${prefix}'.
  Compiler: '${CC} ${CFLAGS} ${CPPFLAGS}'
+ Libraries: '${LIBS}'
 
  Package features:
    Async Execution: ${async_exec}
