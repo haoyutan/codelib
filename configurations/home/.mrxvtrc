@@ -1,0 +1,17 @@
+Mrxvt.background:	#000000
+Mrxvt.foreground:	#00ff44
+Mrxvt.color10:		green4
+Mrxvt.color14:		brown
+
+#Mrxvt.xft:		1
+#Mrxvt.xftFont:		Courier 10 Pitch
+#Mrxvt.xftSize:		11
+#Mrxvt.xftAntialias:	1
+#Mrxvt.xftHinting:	1
+#Mrxvt.xftAutoHint:	1
+
+Mrxvt.font:		-adobe-courier-medium-r-normal--15-*-*-*-*-*-iso8859-1
+Mrxvt.boldFont:		-adobe-courier-bold-r-normal--15-*-*-*-*-*-iso8859-1
+
+Mrxvt.showMenu:		False
+Mrxvt.geometry:		80x30

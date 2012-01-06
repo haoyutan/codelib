@@ -1,0 +1,2 @@
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables -t nat -A PREROUTING -p tcp -i eth0 -d 143.89.191.7 --dport 9001 -j DNAT --to 143.89.191.7:80

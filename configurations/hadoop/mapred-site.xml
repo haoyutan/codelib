@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+  <property>
+    <name>mapred.job.tracker</name>
+    <value>avatar00:18021</value>
+  </property>
+  <property>
+    <name>mapred.local.dir</name>
+    <value>/home/test/var/hadoop/mapred/local</value>
+  </property>
+  <property>
+    <name>mapred.job.tracker.http.address</name>
+	<value>0.0.0.0:17011</value>
+  </property>
+  <property>
+    <name>mapred.task.tracker.http.address</name>
+	<value>0.0.0.0:17012</value>
+  </property>
+
+  <property>
+    <name>mapred.tasktracker.map.tasks.maximum</name>
+    <value>4</value>
+  </property>
+
+  <property>
+    <name>mapred.tasktracker.reduce.tasks.maximum</name>
+    <value>4</value>
+  </property>
+
+  <property>
+    <name>mapred.map.child.java.opts</name>
+    <value>-Xmx1024M</value>
+  </property>
+
+  <property>
+    <name>mapred.reduce.child.java.opts</name>
+    <value>-Xmx1024M</value>
+  </property>
+
+  <property>
+    <name>mapred.map.child.ulimit</name>
+    <value>2097152</value>
+  </property>
+
+  <property>
+    <name>mapred.reduce.child.ulimit</name>
+    <value>2097152</value>
+  </property>
+
+  <property>
+    <name>mapreduce.task.io.sort.factor</name>
+    <value>100</value>
+  </property>
+
+  <property>
+    <name>mapreduce.task.io.sort.mb</name>
+    <value>256</value>
+  </property>
+
+  <property>
+    <name>mapreduce.job.jvm.numtasks</name>
+    <value>-1</value>
+  </property>
+
+  <property>
+    <name>mapreduce.map.output.compress</name>
+    <value>true</value>
+  </property>
+
+  <property>
+    <name>mapred.hosts.exclude</name>
+    <value>/home/test/hadoop/hadoop-0.22.0/conf/slaves.blacklist</value>
+  </property>
+</configuration>

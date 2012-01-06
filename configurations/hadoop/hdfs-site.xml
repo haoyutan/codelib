@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<!-- Put site-specific property overrides in this file. -->
+
+<configuration>
+  <property>
+    <name>dfs.name.dir</name>
+    <value>file:///home/test/var/hadoop/hdfs/nn</value>
+  </property>
+  <property>
+    <name>dfs.data.dir</name>
+    <value>file:///var/hadoop-test/dfs/dn,file:///var2/hadoop-test/dfs/dn</value>
+  </property>
+  <property>
+    <name>dfs.replication</name>
+    <value>3</value>
+  </property>
+  <property>
+    <name>dfs.block.size</name>
+    <value>268435456</value>
+  </property>
+
+  <property>
+    <name>dfs.http.address</name>
+	<value>0.0.0.0:17001</value>
+  </property>
+  <property>
+    <name>dfs.secondary.http.address</name>
+	<value>0.0.0.0:17002</value>
+  </property>
+  <property>
+    <name>dfs.datanode.http.address</name>
+	<value>0.0.0.0:17003</value>
+  </property>
+  <property>
+    <name>dfs.datanode.address</name>
+	<value>0.0.0.0:17004</value>
+  </property>
+  <property>
+    <name>dfs.datanode.ipc.address</name>
+	<value>0.0.0.0:17005</value>
+  </property>
+</configuration>
