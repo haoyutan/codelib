@@ -227,13 +227,21 @@ beginfig(20);
 endfig;
 
 beginfig(21);
-    u.orig := u;
+    save u;
     u := 0.5cm;
     z0=(0,0); z1=(6u,4u); z2=(4u,9u); z3=(1u,7u); z4=(3u,5u);
-    draw z0..z1..z2..z3..z4;
+    path p;
+    p=z0..z1..z2..z3..z4;
+    draw p;
     dotlabels.rt(1, 3, 4);
     dotlabels.top(0, 2);
-    u := u.orig;
+
+    numeric n.len;
+    n.len=arclength p;
+    pickup pencircle scaled 5pt;
+    for i=0 upto 10:
+        draw point (arctime .1*i*n.len of p) of p;
+    endfor;
 endfig;
 
 beginfig(22);
@@ -242,10 +250,16 @@ beginfig(22);
     draw (0,4uy)--(0,0)--(120ux,0);
 
     pickup pencircle scaled 1pt;
-    draw (0,uy){right}
+    path p;
+    p = (0,uy){right}
         for ix=1 upto 8:
             ..(15ix*ux, uy*2/(1+cosd(15ix)))
         endfor;
+    draw p;
+    pickup pencircle scaled 3pt;
+    for i=0 upto 10:
+        drawdot point .1*i*length p of p;
+    endfor;
     label.bot(btex $x$ axis etex, (60ux, 0));
     label.lft(btex $y$ axis etex rotated 90, (0, 2uy));
     label.lft(btex $y={2\over1+\cos x}$ etex, (120ux, 4uy));
