@@ -46,7 +46,7 @@ Generate a user certificate signed by our root CA.
 
     $ openssl ca -keyfile MyCA/MyCA.key.pem -cert MyCA/MyCA.cert.pem -extensions usr_cert -notext -md sha256 -in MyExampleHost/MyExampleHost.csr.pem -out MyExampleHost/MyExampleHost.cert.pem
 
-## 4. Usage (for HTTPS Web Server)
+## 4. Usage (for HTTPS Web server)
 Client: Install `MyCA.cert.pem`.
 
 Server: Use `MyExampleHost.key.pem` and `MyExampleHost.cert.pem` to configure
